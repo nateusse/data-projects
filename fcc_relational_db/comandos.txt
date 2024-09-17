@@ -1,0 +1,107 @@
+pwd (print working directory),ls (list), cd (change directory),
+
+more <file name>, clear, ls -l (long list format)
+
+echo hello website 
+
+ls --help, ls -all or -a
+touch index.html
+cd . pa nada
+
+(copy) cp background.jpg images pero queda en orginal
+remove rm background.jpg 
+(change name) mv roboto.font roboto.woff
+(tree) find
+(folder in folder)  mkdir client/src
+(move to inner folder) mv index.html client/src
+(find file) ind -name index.html
+(move to one up) mv index.html ..
+(move in folder to inside folder) mv images/footer.jpeg client/assets/images
+
+
+
+POSTGRESS
+
+(activar postgres) psql --username=freecodecamp --dbname=postgres
+(create database)CREATE DATABASE nombre_tabla;
+(conectar) \c database_name;
+(listar bases de datos) /l
+(listar tablas) /d
++--------+--------------+-------+--------------+
+| Schema |     Name     | Type  |    Owner     |
++--------+--------------+-------+--------------+
+| public | first_table  | table | freecodecamp |
+| public | second_table | table | freecodecamp |
++--------+--------------+-------+--------------+
+(Crear tabla) CREATE TABLE nombre_tabla();
+(contenido de la tabla) \d table_name();
++--------------+---------+-----------+----------+---------+
+|    Column    |  Type   | Collation | Nullable | Default |
++--------------+---------+-----------+----------+---------+
+| first_column | integer |           |          |         |
++--------------+---------+-----------+----------+---------+
+(create column) ALTER TABLE table_name ADD COLUMN column_name DATATYPE; 
+
+
+(datatypes INT, VARCHAR(30), SERIAL int not null autoincremetno), NUMERIC(4,1) decimales, DATE ( 'YYYY-MM-DD')
+
+
+(delete column) ALTER TABLE table_name DROP COLUMN column_name;
+
+(insertar rows) INSERT INTO table_name(column_1, column_2) VALUES(value1, value2);
+SELECT columns FROM table_name;
+(remover row completo condicion) DELETE FROM table_name WHERE condition; (username="Luigi")
+(drop table) DROP TABLE second_table;
+(drop database) DROP DATABASE second_database;
+(rename database) ALTER DATABASE database_name RENAME TO new_database_name;
+(rename table) ALTER TABLE second_table RENAME COLUMN nombre_column TO new_name;
+(column not null) ALTER TABLE characters ADD COLUMN name VARCHAR(30) NOT NULL;
+(vario valor)
+INSERT INTO characters(name, homeland, favorite_color)
+VALUES('Mario', 'Mushroom Kingdom', 'Red'),
+('Luigi', 'Mushroom Kingdom', 'Green'),
+('Peach', 'Mushroom Kingdom', 'Pink');
+(update value in a column) UPDATE characters SET favorite_color='Orange' WHERE name='Daisy';
+(ordenar por id) SELECT * FROM characters ORDER BY character_id;
+(add priamry key) ALTER TABLE table_name ADD PRIMARY KEY(column_name);
+(remove primary key) ALTER TABLE table_name DROP CONSTRAINT characters_pkey;
+ALTER TABLE more_info ADD COLUMN weight NUMERIC(4,1);
+(clave foranea) ALTER TABLE table ADD COLUMN misma_columna TYPE REFERENCES table(reference);
+(unique, one to one unicamente) ALTER TABLE table ADD UNIQUE(columna_foreingn);
+(not null foreing key) ALTER TABLE table ALTER COLUMN  culumn SET NOT NULL;
+(create table con priamery) CRETE TABLE table(column_name TYPE PRIMARY KEY)
+(uno a muchos) ALTER TABLE sounds ADD COLUMN character_id INT NOT NULL REFERENCES characters(character_id);D
+(add foreign key) ALTER TABLE character_actions ADD FOREIGN KEY(character_id) REFERENCES characters(character_id);
+(composite, priamry key of 2 columns) ALTER TABLE table_name ADD PRIMARY KEY(colun1, column2);
+(join)SELECT * FROM characters FULL JOIN more_info ON  characters.character_id = more_info.character_id; 
+(join one to many)
+SELECT * FROM characters FULL JOIN more_info ON  characters.character_id = more_info.character_id;
+
+W3SCHOOL
+(seleccionar toda la tabla) SELECT * FROM Customers;
+(seleccionar varias columnas) SELECT column1, column2, ...FROM table_name;
+(tupla , elementos unicos de la clomna) SELECT DISTINCT column FROM Customers;
+(contar los unicos) SELECT COUNT(DISTINCT Country) FROM Custumers; >>21
+SELECT Count(*) AS DistinctCountries FROM (SELECT DISTINCT Country FROM Customers)
+
+
+
+column, fields
+-----|
+     | row, record 
+
+
+
+
+
+SELECT - extracts data from a database
+UPDATE - updates data in a database
+DELETE - deletes data from a database
+INSERT INTO - inserts new data into a database
+CREATE DATABASE - creates a new database
+ALTER DATABASE - modifies a database
+CREATE TABLE - creates a new table
+ALTER TABLE - modifies a table
+DROP TABLE - deletes a table
+CREATE INDEX - creates an index (search key)
+DROP INDEX - deletes an index
